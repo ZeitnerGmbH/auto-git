@@ -1,7 +1,3 @@
-# Required VS-Code Version
-
-1.67.0
-
 # Auto-Git
 
 Auto-Git is an extension to push project files to git in a predefined interval without taking any action by the developer.
@@ -16,7 +12,7 @@ Auto-Git is an extension to push project files to git in a predefined interval w
 
 [Added] commitMessage: You are now able to set your own commit message which should be used for auto-git pushes.
 
-[Fixed] Auto-Git fails push on some machines with non-standard git configuration.
+[Fixed] Auto-Git fails to push on some machines with non-standard git configuration.
 
 [Modified] README.md extended with more information. Description for the configuration file and adjusted formatting.
 
@@ -81,23 +77,21 @@ After you created a git-repository, restart Visual Studio Code or reopen the wor
 There will be a **.autogit** directory with logs folder and a **autogit.json** file. You can change some behavoir like interval, logging and silent-mode in the json file.
 After changing any value in the json file, you should stop and start the extension to reload the configuration. This can be done by restarting VS Code or using the extension commands.
 
-```
-runOnStart: If true, auto-git will automatically start push cycle by given interval (see below `updateInterval`) when opening workspace (which is a git-repository).
-logging: Creates a log file (date based) in the .autogit/logs folder. It contains all changes from last push cycle (add/remove/modified/delete). So you can always see what happened during the push cycle. Setting to false will prevent creating log files.
-silent: If false, every finished push cycle, a vscode notification box will show up.
-updateInterval: interval is given in seconds. Defines how long a cycle takes to push added/removed/modified/deleted files to git.
-commitMessage: Here you can override the default auto-git commit message.
-```
+- runOnStart: If true, auto-git will automatically start push cycle by given interval (see below `updateInterval`) when opening workspace (which is a git-repository).
+- logging: Creates a log file (date based) in the .autogit/logs folder. It contains all changes from last push cycle (add/remove/modified/delete). So you can always see what happened during the push cycle. Setting to false will prevent creating log files.
+- silent: If false, every finished push cycle, a vscode notification box will show up.
+- updateInterval: Interval is given in seconds. Defines how long a cycle takes to push added/removed/modified/deleted files to git.
+- commitMessage: Here you can override the default auto-git commit message.
 
 ## Commands
 
 Press F1 or CTRL+Shift+P to open VS Code Command Palette.
 
 - Auto-Git: Version // Shows current installed version in a notification box
-- Auto-Git: Init // Initializes Auto-Git for your Project
+- Auto-Git: Init // Initializes Auto-Git for your project
 - Auto-Git: Start // Starts the interval and routine
 - Auto-Git: Stop // Stops the interval and routine
-- Auto-Git: Restart // Reloads configuration + Stop + Start
+- Auto-Git: Restart // Reloads configuration + stop + start
 
 ## Authors
 
