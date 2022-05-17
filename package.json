@@ -2,7 +2,7 @@
   "name": "auto-git",
   "displayName": "auto-git",
   "description": "Auto-Git is an extention to push project files to git in a predefined interval without taking any action by the developer.",
-  "publisher": "Ray",
+  "publisher": "zeitnergmbh",
   "version": "1.1.0",
   "engines": {
     "vscode": "^1.67.0"
