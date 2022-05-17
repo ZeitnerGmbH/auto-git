@@ -1,3 +1,7 @@
+# Required VS-Code Version
+
+1.67.0
+
 # Auto-Git
 
 Auto-Git is an extension to push project files to git in a predefined interval without taking any action by the developer.
