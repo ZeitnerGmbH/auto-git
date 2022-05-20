@@ -1,8 +1,7 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 const vscode = require("vscode");
 const path = require("path");
 const fs = require("fs");
@@ -134,7 +133,9 @@ class AutoGit {
             'updateInterval': 1800,
             'logging': true,
             'silent': true,
-            "commitMessage": "--- Auto Git Commit ---"
+            "commitMessage": "--- Auto Git Commit ---",
+            "locale": "en-US",
+            "timeZone": "Europe/Berlin"
         };
     }
     compareKeys(a, b) {
@@ -161,9 +162,29 @@ class AutoGit {
                     let changes = status.modified.length + status.created.length + status.deleted.length + status.renamed.length;
                     if (changes > 0) {
                         this.updateStatusBarItem("Auto-Git: Pushing files...");
+                        let options = {
+                            weekday: 'long',
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            timeZone: cfg.timeZone ?? 'Europe/Berlin',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            second: '2-digit',
+                        };
+                        var replacements = {
+                            "{ts}": (new Date().getTime() / 1000).toString(),
+                            "{ts.utc}": new Date().toUTCString(),
+                            "{ts.iso}": new Date().toISOString(),
+                            "{ts.locale}": new Date().toLocaleString(cfg.locale ?? 'en-US', { timeZone: cfg.timeZone ?? 'Europe/Berlin' }),
+                            "{ts.locale.date}": new Date().toLocaleDateString(cfg.locale ?? 'en-US', { timeZone: cfg.timeZone ?? 'Europe/Berlin' }),
+                            "{ts.locale.time}": new Date().toLocaleTimeString(cfg.locale ?? 'en-US', { timeZone: cfg.timeZone ?? 'Europe/Berlin' }),
+                            "{ts.locale.long}": new Date().toLocaleString(cfg.locale ?? 'en-US', options)
+                        };
+                        cfg.commitMessage = cfg.commitMessage.replace(/\{.+?\}/g, (key) => replacements[key]);
                         await git.commit(cfg.commitMessage ?? "--- Auto-Git Commit ---");
-                        var remote = status.tracking.split('/')[0];
-                        var branch = status.tracking.split('/')[1];
+                        var remote = status.tracking.split('/')[0] ?? "origin";
+                        var branch = status.tracking.split('/')[1] ?? "master";
                         await git.push(remote, branch, ['-u']);
                         console.log("[Auto-Git]: Changes since last sync: modified (" + status.modified.length + ") | created (" + status.created.length + ") | deleted (" + status.deleted.length + ") | renamed: (" + status.renamed.length + ")");
                         if (cfg.logging) {
