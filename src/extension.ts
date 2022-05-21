@@ -3,7 +3,6 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
-import * as util from 'util';
 
 import simpleGit, { SimpleGit } from 'simple-git';
 
@@ -13,7 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
 	let autogit = new AutoGit();
     
     let cmdversion = vscode.commands.registerCommand('autogit.version', () => {
-        vscode.window.showInformationMessage('Version 1.1.0 by Eray Sönmez <dev@ray-works.de>');
+        vscode.window.showInformationMessage('Version 1.1.4 by Eray Sönmez <dev@ray-works.de>');
     });
 
 	let cmdinit = vscode.commands.registerCommand('autogit.init', () => {

@@ -10,7 +10,7 @@ let myStatusBarItem;
 function activate(context) {
     let autogit = new AutoGit();
     let cmdversion = vscode.commands.registerCommand('autogit.version', () => {
-        vscode.window.showInformationMessage('Version 1.1.0 by Eray Sönmez <dev@ray-works.de>');
+        vscode.window.showInformationMessage('Version 1.1.3 by Eray Sönmez <dev@ray-works.de>');
     });
     let cmdinit = vscode.commands.registerCommand('autogit.init', () => {
         if (autogit.checkWorkspace() && autogit.checkGit()) {

@@ -69,6 +69,7 @@ After changing any value in the json file, you should stop and start the extensi
 - `updateInterval`: Interval is given in seconds. Defines how long a cycle takes to push added/removed/modified/deleted files to git.
 - `commitMessage`: Here you can override the default auto-git commit message.
 - commitMessage optional `placeholders`:
+
 ```
 {ts} represents seconds (as integer) from 1970-01-01 till now (unix timestamp)
 
@@ -84,6 +85,7 @@ After changing any value in the json file, you should stop and start the extensi
 
 {ts.locale.long} represents the date and time as long format e.g. for Europe/Berlin and de-DE: Freitag, 20. Mai 2022, 22:05:12
 ```
+
 ## Commands
 
 Press F1 or CTRL+Shift+P to open VS Code Command Palette.

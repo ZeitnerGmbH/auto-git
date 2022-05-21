@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.4
+
+* Preloading extension to prevent restart of vscode when working in an empty workspace without any files.
+* Cleaned up unnecessary imports
+* Improved performance
+
 ## 1.1.3
 
 * Adjusted CHANGELOG.md and README.md for more readability
@@ -10,6 +16,7 @@
 ## 1.1.2
 
 * Added following placeholders for custom commit messages has been implemented:
+
 ```
 {ts} represents seconds (as integer) from 1970-01-01 till now (unix timestamp)
 
@@ -26,15 +33,13 @@
 {ts.locale.long} represents the date and time as long format e.g. for Europe/Berlin and de-DE: Freitag, 20. Mai 2022, 22:05:12
 ```
 
-* Added `locale` and `timeZone` added to autogit.json configuration file and are used for the placeholders only in the custom commit message.
+* Added `locale` and `timeZone` added to autogit.json configuration file and are used for the placeholders only in the custom commit message. 
+  
+    locale format specification: [BCP 47](https://datatracker.ietf.org/doc/html/rfc4647#section-3.3.2)
 
-locale format specification: [BCP 47](https://datatracker.ietf.org/doc/html/rfc4647#section-3.3.2)
+    example: de-DE (German, as used in Germany), ar-DZ (Arabic, as used in Algeria), ar-EG (Arabic, as used in Egypt), fr-VU (French, as used in Vanuatu), [Language designators with regions](https://lingohub.com/developers/supported-locales/language-designators-with-regions)
 
-example: de-DE (German, as used in Germany), ar-DZ (Arabic, as used in Algeria), ar-EG (Arabic, as used in Egypt), fr-VU (French, as used in Vanuatu), [Language designators with regions](https://lingohub.com/developers/supported-locales/language-designators-with-regions)
-
-timeZone format specification: IANA TimeZone
-
-[List_of_tz_database_time_zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+    timeZone format specification: IANA TimeZone [List_of_tz_database_time_zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 
 ## 1.1.0
 
